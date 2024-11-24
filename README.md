@@ -110,7 +110,6 @@ Contributions to improve this project are highly appreciated. Here’s how you c
 ## 📬 **Contact**
 - **Author**: Ganesh Solapure  
 - **GitHub**: [Ganesh-Solapure](https://github.com/Ganesh-Solapure)  
-- **Email**: [Your Email Address] (if you wish to include this)  
 Feel free to reach out with suggestions, feedback, or collaboration requests.
 
 ---

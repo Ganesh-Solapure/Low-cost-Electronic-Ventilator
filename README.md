@@ -1,125 +1,85 @@
-# Low-Cost Electronic Ventilator using Arduino
+# Low-Cost Electronic Ventilator
 
-This project is a low-cost electronic ventilator designed for medical emergencies, especially in resource-constrained environments. The device automates the compression and release of a plastic respiratory bag (Ambu bag) using a servo motor controlled by an Arduino, ensuring consistent airflow delivery to patients in need of respiratory assistance.
+This project demonstrates a simple and affordable electronic ventilator prototype designed for educational or emergency use. It utilizes readily available components and an Arduino board to control a servo motor and display real-time information on an LCD screen.
 
----
+## Features
 
-## 🌟 **Project Highlights**
-- **Cost-Effective Design**: Uses affordable and readily available components.
-- **Microcontroller-Based**: Built on the Arduino platform, ensuring reliability and ease of development.
-- **Real-Time Monitoring**: Features a 16x2 LCD to display operational messages and runtime data.
-- **User-Friendly Interface**: Simple hardware and software setup for rapid deployment.
-- **Scalable**: Can be enhanced with additional features such as pressure sensors and Wi-Fi monitoring.
+* **Servo-Controlled Ventilation:** Adjusts a servo motor to simulate breathing cycles.
+* **Potentiometer-Based Speed Control:** Manually control the speed and angle of the servo.
+* **LCD Display:** Provides real-time feedback on speed, angle, and breathing cycle duration.
+* **Cost-Effective Components:** Uses readily available electronics for affordability.
 
----
+## Components Required
 
-## 📃 **Features**
-1. **Automated Ventilation**:
-   - The servo motor mimics a breathing cycle by compressing and releasing the Ambu bag.
-   - Breathing frequency and volume can be adjusted by modifying the code.
-2. **LCD Feedback**:
-   - Displays critical messages such as "Hello, World!" and runtime statistics.
-   - Helps users monitor device operation in real time.
-3. **Compact and Portable**:
-   - Designed to be lightweight for ease of transport and deployment.
+* **Arduino Board:** Any compatible board (e.g., Uno, Nano)
+* **Servo Motor:** Standard servo motor (e.g., SG90, MG995)
+* **Potentiometer:** 10kΩ potentiometer for user control
+* **LCD Display:** 16x2 I2C LCD module
+* **Connecting Wires:** Male-to-male and male-to-female jumper wires
+* **Breadboard:** (Optional, for prototyping)
+* **Power Supply:** 5V power supply for Arduino and servo
 
----
+## Getting Started
 
-## 🛠️ **Components Required**
-1. **Microcontroller**: Arduino Uno (or equivalent).
-2. **Servo Motor**: (e.g., SG90 or MG996R).
-3. **Display**: LiquidCrystal LCD (16x2).
-4. **Respiratory Bag**: Manual Ambu bag.
-5. **Power Supply**: USB or battery for Arduino.
-6. **Miscellaneous**:
-   - Jumper wires
-   - Breadboard
-   - Resistors (as needed)
-   - Plastic or 3D-printed frame for holding components.
+### Hardware Setup
 
----
+1. Connect the servo motor to pin 9 of the Arduino.
+2. Connect the potentiometer to analog pin A0.
+3. Connect the I2C LCD module to the appropriate I2C pins on the Arduino (SDA and SCL). Refer to your module's documentation.
+4. Power the system using a 5V supply or the Arduino's USB power.
 
-## ⚙️ **Hardware Setup**
-1. **Connect the LCD**:
-   - Use the `rs`, `en`, `d4`, `d5`, `d6`, and `d7` pins to connect the LCD to the Arduino.
-   - Refer to the `LiquidCrystal` library for pin assignments.
-2. **Attach the Servo Motor**:
-   - Connect the signal pin of the servo motor to pin 9 on the Arduino.
-   - Power the servo motor using an external power supply if required.
-3. **Fix the Ambu Bag**:
-   - Secure the Ambu bag using a frame and position the servo motor to automate compression.
-4. **Final Assembly**:
-   - Mount all components securely on a base.
+### Software Setup
 
----
+1. Install the required Arduino libraries:
+   - Servo.h
+   - LiquidCrystal_I2C.h (Download from here if not already present: https://github.com/Freetronics/LiquidCrystal_I2C)
+2. Upload the provided code to your Arduino board.
 
-## 🖥️ **Software Setup**
-1. **Install Arduino IDE**:
-   - Download the latest Arduino IDE from the [official website](https://www.arduino.cc/en/software).
-2. **Add Libraries**:
-   - Ensure `Servo.h` and `LiquidCrystal.h` libraries are installed.
-   - These libraries handle motor control and LCD interaction, respectively.
-3. **Upload Code**:
-   - Use the code provided in this repository (`ventilator_code.ino`) and upload it to the Arduino using the IDE.
-4. **Calibrate the Device**:
-   - Adjust servo motor positions and timings (degrees and delays) as per patient needs.
+## Usage
 
----
+1. Power on the system.
+2. Adjust the potentiometer to control ventilation parameters:
+   - Speed (Fast/Slow)
+   - Angle (100°, 110°, or 120°)
+   - Breathing cycle duration (4-6 seconds)
+3. Observe real-time feedback on the LCD screen.
 
-## 📋 **Step-by-Step Guide**
-1. **Circuit Assembly**:
-   - Follow the provided circuit diagram (add it as an image in the repository) to wire up the components.
-2. **Code Upload**:
-   - Open the `.ino` file in the Arduino IDE, verify the code, and upload it to your Arduino board.
-3. **Test the System**:
-   - Power on the Arduino and observe the servo motor compressing the bag.
-   - Check the LCD for real-time updates.
-4. **Adjust Parameters**:
-   - Modify variables in the code for breathing rate and motor speed.
-5. **Deploy**:
-   - Ensure the device operates smoothly and is ready for real-world use.
+## Code Explanation
 
----
+The code uses the following functionalities:
 
-## 🚀 **Future Enhancements**
-- **Pressure Monitoring**:
-  - Integrate pressure sensors for real-time feedback on ventilation efficiency.
-- **Advanced Display**:
-  - Upgrade to an OLED or graphical LCD for better data visualization.
-- **Wi-Fi Control**:
-  - Use an ESP8266/ESP32 module for remote monitoring and control via a mobile app or web interface.
-- **Battery Backup**:
-  - Add a rechargeable battery to ensure continuous operation during power outages.
+* **Servo Control:** Drives the servo motor in a cyclical pattern to simulate ventilation.
+* **LCD Display:** Provides status updates based on potentiometer input.
+* **Potentiometer Input:** Maps analog readings to servo angle and operational parameters.
 
----
+**Key Functions:**
 
-## ⚖️ **License**
-This project is licensed under the Apache License 2.0. See the [LICENSE](./LICENSE) file for details.
+* `displayMessage(line1, line2)`: Updates the LCD with specific messages.
+* `controlServo(angle, step, delayMs)`: Controls servo position and speed based on parameters.
 
----
+## Demonstration
 
-## 🤝 **How to Contribute**
-Contributions to improve this project are highly appreciated. Here’s how you can contribute:
-1. Fork the repository.
-2. Create a new branch (`feature-new-enhancement`).
-3. Commit your changes and push the branch.
-4. Submit a pull request for review.
+A sample operation:
 
----
+- Potentiometer set to low value:
+    - Speed: Fast
+    - Angle: 100°
+    - Cycle Duration: 4 seconds
+- Potentiometer set to high value:
+    - Speed: Slow
+    - Angle: 120°
+    - Cycle Duration: 6 seconds
 
-## 📬 **Contact**
-- **Author**: Ganesh Solapure  
-- **GitHub**: [Ganesh-Solapure](https://github.com/Ganesh-Solapure)  
-Feel free to reach out with suggestions, feedback, or collaboration requests.
+## Future Enhancements
 
----
+* Integration of sensors for automated control based on real-time data.
+* Incorporation of wireless modules for remote monitoring.
+* Expansion to manage multiple ventilation cycles.
 
-## 📷 **Gallery**
-_(Add images or GIFs of your working prototype, including circuit setup and device in action.)_
+## License
 
----
+This project is open-source and licensed under the MIT License.
 
-## 📚 **References**
-- Arduino Documentation: [https://www.arduino.cc](https://www.arduino.cc)
-- Servo Motor Basics: [Servo Motors and Control](https://en.wikipedia.org/wiki/Servo_control)
+## Acknowledgments
 
+Special thanks to the open-source community and the creators of the utilized libraries.
